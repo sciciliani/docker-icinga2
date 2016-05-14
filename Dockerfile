@@ -26,6 +26,7 @@ RUN icingacli setup config directory --group www-data
 
 RUN wget  --no-cookies "https://s3.amazonaws.com/icinga2-deploy/icinga2-config.tgz" -O /tmp/icinga2-config.tgz
 RUN tar -xvzf /tmp/icinga2-config.tgz -C /
+RUN chmod 755 /opt/init.sh
 
 RUN icinga2 api setup
 
