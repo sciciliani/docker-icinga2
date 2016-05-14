@@ -1,0 +1,45 @@
+<?php
+
+use Icinga\Web\Navigation\Navigation;
+
+$navigation = new Navigation();
+//$navigation->load($object->getType() . '-note');
+foreach ($navigation as $item) {
+    $item->setObject($object);
+}
+
+$notes = trim($object->getNotes());
+if ($notes) {
+    $navigation->addItem($notes);
+}
+
+$links = $object->getNotesUrls();
+if (! empty($links)) {
+    foreach ($links as $link) {
+        $navigation->addItem(
+            // add warning to links that open in new tabs to improve accessibility, as recommended by WCAG20 G201
+            $this->icon(
+                'forward',
+                $this->translate('Link opens in new window'),
+                array('aria-label' => $this->translate('Link opens in new window'))
+            ) . ' ' . $this->escape($link),
+            array(
+                'url'       => $link,
+                'target'    => '_blank',
+                'renderer'  => array(
+                    'NavigationItemRenderer',
+                    'escape_label' => false
+                )
+            )
+        );
+    }
+}
+
+if ($navigation->isEmpty() || !$navigation->hasRenderableItems()) {
+    return;
+}
+?>
+<tr>
+    <th><?= $this->translate('Notes'); ?></th>
+    <?= $navigation->getRenderer()->setElementTag('td')->setCssClass('notes'); ?>
+</tr>

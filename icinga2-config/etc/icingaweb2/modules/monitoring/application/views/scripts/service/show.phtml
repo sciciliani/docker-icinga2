@@ -1,0 +1,8 @@
+<div class="controls separated">
+<?php if (! $this->compact): ?>
+    <?= $this->tabs ?>
+<?php endif ?>
+    <?= $this->render('partials/object/service-header.phtml') ?>
+</div>
+
+<?= $this->render('partials/object/detail-content.phtml') ?>

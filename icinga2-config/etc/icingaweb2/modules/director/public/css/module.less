@@ -1,0 +1,1118 @@
+.content a {
+  color: @icinga-blue;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1 {
+  margin-bottom: 0.5em;
+}
+
+table.common-table {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  td {
+    vertical-align: top;
+  }
+
+  pre {
+    margin: 0;
+    padding: 0.2em;
+    overflow: hidden;
+    max-height: 12em;
+    background: @gray-lightest;
+    display: inline-block;
+  }
+}
+
+span.disabled {
+  cursor: no-drop;
+  color: @gray-light;
+}
+
+.controls span a {
+  color: @icinga-blue;
+  margin-right: 1em;
+}
+
+pre.disabled {
+  color: @gray-light;
+}
+
+/* TODO: remove this, but autosubmit looks ugly otherwise */
+input[disabled] {
+  background: inherit;
+}
+/* END OF TODO */
+
+pre {
+  background: none;
+}
+
+pre.logfile {
+  font-size: 0.875em;
+  padding: 1em;
+  background-color: #222;
+  color: #ddd;
+  overflow: auto;
+  white-space: pre;
+
+  .loglevel, .application {
+    font-weight: bold;
+  }
+
+  .critical {
+    color: @color-critical;
+  }
+
+  .warning {
+    color: @color-warning;
+  }
+
+  .information {
+    color: @color-ok;
+  }
+
+  .notice {
+    // color: @color-ok;
+  }
+
+  .debug {
+    color: @color-pending;
+  }
+
+  .error-hint {
+    color: #fff;
+    font-weight: 900;
+  }
+}
+
+table.avp th {
+    font-size: inherit;
+}
+
+.content form {
+  margin-bottom: 2em;
+}
+
+.invisible {
+    position: absolute;
+    left: -100%;
+}
+
+form input[type=submit] {
+  .button();
+  border-width: 1px;
+  margin-top: 0.5em;
+
+  &:disabled {
+    border-color: @gray-light;
+    background-color: @gray-light;
+    color: #fff;
+  }
+}
+
+form input[type=submit]:first-of-type {
+    border-width: 2px;
+}
+
+form input[type=submit].link-button {
+  color: @icinga-blue;
+  background: none;
+  border: none;
+  padding: 0;
+
+  text-align: left;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+form p.description {
+  padding: 1em 1em;
+  margin: 0;
+  font-style: italic;
+  width: 100%;
+}
+
+input, select, select option, textarea {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+}
+
+form ul.form-errors {
+    margin-bottom: 0.5em;
+    ul.errors li {
+        background: @color-critical;
+        font-weight: bold;
+        padding: 0.5em 1em;
+        color: white;
+    }
+}
+
+select::-ms-expand, input::-ms-expand, textarea::-ms-expand { /* for IE 11 */
+    display: none;
+}
+
+select {
+    border: 1px solid #ddd;
+    cursor: pointer;
+    background: none;
+}
+
+input[type=text], input[type=password], textarea, select {
+    max-width: 36em;
+    min-width: 20em;
+    width: 100%;
+    line-height: 2em;
+    height: 2.4em;
+    padding-left: 0.5em;
+    border-style: solid;
+    border-color: transparent;
+    border-bottom-color: @gray-lighter;
+    border-width: 1px 1px 1px 3px;
+    background-color: white;
+
+    &.search {
+        background: transparent url("../img/icons/search.png") no-repeat scroll 0.5em center / 1em 1em;
+        padding-left: 2em;
+    }
+}
+
+select option {
+    height: 2em;
+    padding-top: 0.3em;
+}
+
+label {
+    line-height: 2em;
+}
+
+form dl {
+    margin: 0;
+    padding: 0;
+}
+
+div.filter > form.search, div.filter > a {
+    // Duplicated by quicksearch
+    display: none;
+}
+
+div.filter form.editor > ul.tree ul li.active {
+  background-color: @tr-hover-color !important;
+}
+
+div.filter form.editor {
+  padding-top: 1em;
+  select, input[type=text] {
+    line-height:auto;
+    height: auto;
+  }
+}
+
+
+
+form.quicksearch {
+    float: right;
+
+    input.search {
+        width: 8em;
+        min-width: auto;
+        border: none;
+        background-size: 0.75em auto;
+        background-position: 0.5em 0.75em;
+        padding-left: 1.5em;
+        &:focus {
+            width: 16em;
+            .transition(width 0.5s ease);
+            border: none;
+        }
+    }
+}
+
+h1 form.quicksearch {
+    font-size: 0.75em;
+    font-weight: normal;
+    padding-left: 1em;
+    float: none;
+}
+
+#layout.twocols h1 form.quicksearch {
+    float: right;
+}
+
+ul.extensible-set {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: inline-block;
+    width: 100%;
+    max-width: 36em;
+    min-width: 20em;
+    border-bottom: 1px solid @gray-lighter;
+
+    input[type=text], input[type=password], textarea, select {
+        border-color: transparent;
+    }
+
+    li {
+        display: inline;
+    }
+
+    select {
+        width: 100%;
+    }
+
+    input[type=text] {
+        background-color: @tr-active-color;
+        .rounded-corners(0.5em);
+        border: 1px solid transparent;
+        padding: 0.1em 0.3em;
+        margin: 0.2em 0.2em;
+        width: 30%;
+        min-width: 4em;
+        text-overflow: ellipsis;
+    }
+
+    span.inline-buttons {
+        position: absolute;
+        z-index: 10;
+        right: 0.225em;
+        top: -0.275em;
+        input[type=submit] {
+            font-family: 'ifont';
+            width: 2em;
+            height: 2em;
+            font-size: 1em;
+            margin-left: 0.2em;
+            padding: 1px 0 1px 0;
+        }
+    }
+
+    select.extend-set, input.extend-set {
+        display: none;
+        background-color: @gray-lighter;
+    }
+}
+
+form {
+    #_FAKE_SUBMIT {
+        position: absolute;
+        left: -100%;
+    }
+}
+
+dd.active ul.extensible-set, ul.extensible-set.sortable {
+
+    li {
+        display: list-item;
+        position: relative;
+        clear: both;
+    }
+
+    input[type=text], select {
+        width: 100%;
+    }
+
+    input[type=text] {
+        background-color: white;
+        .rounded-corners(0);
+        border: 1px solid white;
+        padding: 0.25em 0.5em;
+        margin: 0;
+    }
+}
+
+dd.active ul.extensible-set {
+    border: 1px solid @gray-lighter;
+
+    input[type=submit]:first-of-type {
+        border-width: 1px;
+    }
+
+    select.extend-set, input.extend-set {
+        display: inline;
+    }
+}
+
+select::-moz-focus-inner { border: 0; }
+
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+
+select, input[type=text], textarea {
+    &:hover {
+        border-style: dotted solid dotted solid;
+        border-color: @gray-light;
+    }
+
+    &:focus, &:focus:hover {
+        border-style: solid;
+        border-color: @icinga-blue;
+        outline: none;
+    }
+}
+
+select[value=""] {
+    color: blue;
+    border: 1px solid #666;
+    background-color: white;
+}
+
+select option {
+    color: inherit;
+    padding-left: 0.5em;
+    background-color: white;
+}
+
+select option[value=""] {
+    color: #aaa;
+    background-color: white;
+}
+
+a {
+    &.state-critical {
+        color: @color-critical;
+    }
+
+    &.state-warning {
+        color: @color-warning;
+    }
+
+    &.state-ok {
+        color: @color-ok;
+    }
+
+    &.state-unknown {
+        color: @color-unknown;
+    }
+
+    &.state-pending {
+        color: @color-pending;
+    }
+}
+
+a:hover::before {
+  text-decoration: none;
+}
+
+ul.main-actions {
+  margin: 0;
+  padding: 0;
+  li {
+    list-style-type: none;
+
+    text-align: left;
+    display: inline-block;
+    padding: 0;
+    clear: both;
+    width: 19em;
+    min-width: 16em;
+    vertical-align: top;
+
+    a {
+        i {
+            height: 1.6em;
+            font-size: 3em;
+            display: block;
+            height: 100%;
+            float: left;
+            line-height: 1em;
+            margin-right: 0.3em;
+        }
+
+        &.state-critical i {
+            color: @color-critical;
+        }
+
+        &.state-warning i {
+            color: @color-warning;
+        }
+
+        &.state-ok i {
+            color: @color-ok;
+        }
+
+        &.state-unknown i {
+            color: @color-unknown;
+        }
+
+        &.state-pending i {
+            color: @color-pending;
+        }
+
+        padding: 1em;
+        font-size: 1.1em;
+        color: #666;
+        font-weight: bold;
+        display: block;
+        text-decoration: none;
+        height: 12em;
+
+        overflow: hidden;
+
+        &:hover {
+            background-color: #666;
+            color: white;
+            text-decoration: none;
+        }
+    }
+
+    p {
+        font-weight: normal;
+        margin-bottom: 0.5em;
+    }
+  }
+}
+
+#layout.compact-layout ul.main-actions,
+#layout.poor-layout ul.main-actions {
+  li {
+    a { height: 12em; }
+    > a > i {
+      font-size: 2.4em;
+    }
+  }
+}
+
+#layout.minimal-layout ul.main-actions,
+#layout.twocols ul.main-actions {
+  li {
+    a { height: 12em; }
+    width: 16em;
+    > a > i {
+      font-size: 1.8em;
+    }
+  }
+}
+
+fieldset {
+    margin: 0;
+    padding: 0 0 1.5em 0;
+    border: none;
+
+    legend {
+        margin: 0em 0 0.5em 0;
+        font-size: 1em;
+        border-bottom: 1px solid @gray-light;
+        font-weight: bold;
+        display: block;
+        width: 100%;
+        padding-left: 1em;
+        line-height: 2em;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+
+        &:hover {
+            border-color: @text-color;
+        }
+
+        &::before {
+            // icon: down-dir
+            font-family: 'ifont';
+            content: '\e81d';
+            margin-left: -1em;
+            padding-top: 0em;
+            float: left;
+            color: inherit;
+        }
+    }
+
+    &.collapsed {
+        legend {
+            margin: 0;
+        }
+
+        dd, dt, ul {
+            display: none;
+        }
+
+        legend::before {
+            // icon: right-dir
+            content: '\e820';
+        }
+
+        margin-bottom: 0.2em;
+        padding-bottom: 0;
+    }
+}
+
+
+/* BEGIN Forms */
+form dt label {
+    width: auto;
+    font-weight: normal;
+    font-size: inherit;
+
+    &.required {
+        &::after {
+            content: '*'
+        }
+    }
+
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+ul.assign-rule {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    select, input[type=text] {
+        min-width: auto;
+    }
+
+    select.assign-type {
+        width: 8em;
+    }
+
+    select.assign-operator {
+        width: 3em;
+    }
+
+    select.assign-property {
+        width: 12em;
+    }
+
+    input.assign-expression {
+        width: 12em;
+    }
+}
+
+form fieldset {
+    min-width: 36em;
+}
+
+form dd input.related-action[type='submit'] {
+    display: none;
+}
+
+form dd.active li.active input.related-action[type='submit'] {
+    display: inline-block;
+}
+
+form dd.active {
+    p.description {
+        color: inherit;
+        font-style: normal;
+    }
+}
+
+form dd {
+  padding: 0.3em 0.5em;
+  margin: 0;
+}
+
+form dt {
+  padding: 0.5em 0.5em;
+  margin: 0;
+}
+
+form dt.active, form dd.active {
+    background-color: @tr-active-color;
+}
+
+form dt {
+    display: inline-block;
+    vertical-align: top;
+    min-width: 12em;
+    min-height: 2.5em;
+    width: 30%;
+    &.errors label {
+        color: @color-critical;
+    }
+}
+
+form dd {
+    display: inline-block;
+    width: 63%;
+    min-height: 2.5em;
+    vertical-align: top;
+    margin: 0;
+    &.errors {
+        input[type=text], select {
+            border-color: @color-critical;
+        }
+    }
+}
+
+form dd:after {
+    display: block;
+    content: '';
+}
+
+form textarea {
+    height: auto;
+}
+
+form dd ul.errors {
+    list-style-type: none;
+    padding-left: 0.3em;
+    font-size: 0.857em;
+
+    li {
+        color: @colorCritical;
+        padding: 0.3em;
+    }
+}
+
+form div.hint {
+    padding: 1em;
+    background-color: @tr-hover-color;
+    margin: 1em 0;
+    max-width: 65em;
+    font-size: 1em;
+
+    pre {
+        font-style: normal;
+        background-color: white;
+        margin: 0;
+        padding: 1em;
+    }
+}
+
+/* END of Forms */
+
+p.error {
+    color: white;
+    padding: 1em 2em;
+    background-color: @colorCriticalHandled;
+    border: 3px solid @colorCritical;
+
+    a {
+        color: inherit;
+        font-weight: bold;
+    }
+}
+
+table.tinystats {
+  font-size: 0.7em;
+  float: right;
+  width: 16em;
+
+  thead {
+    th {
+      width: 7em;
+      text-align: right;
+    }
+
+    th:first-child {
+      width: auto;
+    }
+  }
+
+  tbody {
+    th, td {
+      text-align: right;
+    }
+  }
+}
+
+/* Simple table, test */
+
+table.syncstate {
+    tr td:first-child {
+        padding-left: 2em;
+        &::before {
+            font-family: 'ifont';
+            // icon-help:
+            content: '\e85b';
+            float: left;
+            font-weight: bold;
+            margin-left: -1.5em;
+            line-height: 1.5em;
+        }
+    }
+
+    tr.in-sync td:first-child::before {
+        content: '\e803';
+        color: @color-ok;
+    }
+
+    tr.pending-changes td:first-child::before {
+        content: '\e864';
+        color: @color-warning;
+    }
+
+    tr.failing td:first-child::before {
+        content: '\e804';
+        color: @color-critical;
+    }
+}
+
+table.icinga-objects {
+    tr td:first-child {
+        padding-left: 2em;
+        &::before {
+            font-family: 'ifont';
+            // icon-wrench:
+            content: '\e83d';
+            float: left;
+            font-weight: bold;
+            margin-left: -1.5em;
+            line-height: 1.5em;
+        }
+    }
+
+    tr.icinga-object-external td:first-child::before {
+        color: @gray;
+        // icon-pin
+        content: '\e879';
+    }
+
+    tr.icinga-object td:first-child::before {
+        color: @text-color;
+        // icon-thumbs-up
+        // content: '\e867';
+        // icon-ok
+        content: '\e803';
+    }
+
+    tr.icinga-template td:first-child::before {
+        color: @gray-light;
+        // icon-paste
+        content: '\e817';
+    }
+
+    tr.icinga-apply td:first-child::before {
+        color: @text-color;
+        // resize-full-alt
+        content: '\e829';
+    }
+
+}
+
+table.assignment-table {
+    ul.apply-rules {
+        margin: 1em 0 1em 0;
+        padding: 0;
+        border: 1px solid @gray-lighter;
+
+        li {
+            display: block;
+
+            a {
+                display: block;
+                float: none;
+                font-weight: normal;
+                background-color: white;
+                padding: 0.3em 1.5em;
+                &:hover {
+                    background-color: @icinga-blue;
+                    color: white;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    a {
+        color: @icinga-blue;
+        float: right;
+
+        &:first-child {
+            float: none;
+            color: inherit;
+            font-weight: bold;
+        }
+    }
+}
+
+div.content.compact table.icinga-objects thead {
+    display: none;
+}
+
+table.deployment-log {
+
+    tr td:nth-child(2), tr th:nth-child(2) {
+        text-align: right;
+        padding-right: 1em;
+    }
+
+    tr th:first-child {
+        padding-left: 2em;
+    }
+
+    tr td:first-child {
+        padding-left: 2em;
+        &::before {
+            font-family: 'ifont';
+            // icon-help:
+            content: '\e85b';
+            float: left;
+            font-weight: bold;
+            margin-left: -1.5em;
+            line-height: 1.5em;
+        }
+    }
+
+    tr.succeeded td:first-child::before {
+        // icon-ok
+        color: @color-ok;
+        content: '\e803';
+    }
+
+    tr.pending td:first-child::before {
+        color: @gray;
+        // icon-spinner
+        content: '\e874';
+       .animate(spin 2s infinite linear);
+    }
+
+    tr.failed td:first-child::before {
+        // icon-ok
+        color: @color-critical;
+        content: '\e804';
+    }
+
+    tr.running td, tr.running td a {
+        font-weight: bold;
+    }
+}
+
+table.endpoints {
+    tr.deployment-endpoint td:first-child::before {
+        color: @color-ok;
+    }
+}
+
+table.activity-log {
+
+    tr th:first-child {
+        padding-left: 2em;
+    }
+
+    tr td:first-child {
+        padding-left: 2em;
+        &::before {
+            font-family: 'ifont';
+            // icon-help:
+            content: '\e85b';
+            float: left;
+            font-weight: bold;
+            margin-left: -1.5em;
+            line-height: 1.5em;
+        }
+    }
+
+    tr.action-create td:first-child::before {
+        // icon-plus
+        color: @color-pending;
+        content: '\e805';
+    }
+
+    tr.action-modify td:first-child::before {
+        // icon-wrench
+        color: @color-ok;
+        content: '\e83d';
+    }
+
+    tr.action-delete td:first-child::before {
+        // icon-cancel
+        color: @color-critical;
+        content: '\e804';
+    }
+
+    tr.undeployed td, tr.undeployed a {
+        font-weight: bold;
+    }
+
+    tr.undeployed td:first-child::before {
+        color: @gray;
+    }
+}
+
+.tree li a {
+  display: inline-block;
+  padding-left: 2.4em;
+  line-height: 2em;
+  text-decoration: none;
+  color: #777;
+  outline: 0;
+  background-repeat: no-repeat;
+  background-position: 0.8em 0.4em;
+}
+
+
+
+.tree a.root { background-image: url('../img/director/globe.png'); }
+.tree a.host { background-image: url('../img/director/server.png'); }
+.tree a.service { background-image: url('../img/director/service.png'); }
+.tree a.command { background-image: url('../img/director/script.png'); }
+
+.diff {
+    font-family: @font-family-fixed;
+    white-space: pre-wrap;
+
+
+    del, ins {
+        text-decoration: none;
+    }
+
+    del {
+        color: @colorCritical;
+        background-color: #fdd;
+    }
+
+    ins {
+        color: @colorOk;
+        background-color: #dfd;
+    }
+}
+
+div.diff {
+/*    line-height: 1.8em;
+    height: 1.8em;*/
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+.diff.old ins {
+  display: none;
+}
+
+.diff.new del {
+  display: none;
+}
+
+.tree li a {
+  display: inline-block;
+  padding-left: 2.4em;
+  line-height: 2em;
+  text-decoration: none;
+  color: #777;
+  outline: 0;
+  background-repeat: no-repeat;
+  background-position: 0.8em 0.4em;
+}
+
+.tree a.root  { background-image: url('../img/director/globe.png'); }
+.tree a.abstract  { background-image: url('../img/director/tree.png'); }
+.tree a.object { background-image: url('../img/director/leaf.gif'); }
+
+form.editor {
+  select, input[type=text] {
+    background: white;
+    max-width: auto;
+    min-width: auto;
+    width: auto;
+  }
+  .tree li a {
+    padding: 0;
+  }
+}
+
+/** php-diff **/
+
+.Differences {
+    width: 100%;
+    table-layout: fixed;
+    empty-cells: show;
+}
+
+.Differences thead {
+    display: none;
+}
+
+.Differences thead th {
+    text-align: left;
+    padding-left: 4 / 14 * 16em;
+}
+.Differences tbody th {
+    text-align: right;
+    width: 4em;
+    padding: 1px 2px;
+    border-right: 1px solid @gray-light;
+    background: @gray-lightest;
+    font-weight: normal;
+    vertical-align: top;
+}
+
+.Differences tbody td {
+    width: 50%;
+    .preformatted();
+    word-break: break-all;
+}
+
+@color-diff-ins: #bfb;
+@color-diff-del: #faa;
+@color-diff-changed-old: #fdd;
+@color-diff-changed-new: #efe;
+
+.DifferencesSideBySide {
+    ins, del {
+        text-decoration: none;
+    }
+
+    .ChangeInsert {
+        td.Left {
+            background: @gray-lighter;
+        }
+        td.Right {
+            background: @color-diff-ins;
+        }
+    }
+
+    .ChangeDelete {
+        td.Left {
+            background: @color-diff-del;
+        }
+        td.Right {
+            background: @gray-ligher;
+        }
+    }
+
+    .ChangeReplace {
+        td.Left {
+            background: @color-diff-changed-old;
+            del {
+                background: @color-diff-del;
+            }
+        }
+
+        td.Right {
+            background: @color-diff-changed-new;
+            ins {
+                background: @color-diff-ins;
+            }
+        }
+
+    }
+}
+
+.Differences .Skipped {
+    background: @gray-lightest;
+}
+
+.DifferencesInline .ChangeReplace .Left,
+.DifferencesInline .ChangeDelete .Left {
+    background: #fdd;
+}
+
+.DifferencesInline .ChangeReplace .Right,
+.DifferencesInline .ChangeInsert .Right {
+    background: #dfd;
+}
+
+.DifferencesInline .ChangeReplace ins {
+    background: #9e9;
+}
+
+.DifferencesInline .ChangeReplace del {
+    background: #e99;
+}
+/** END of php-diff **/
