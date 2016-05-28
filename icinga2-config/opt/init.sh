@@ -12,8 +12,6 @@ if [ ! -f "$FLAGFILE" ]; then
 
 	echo "Waiting for db to start..."
 
-	sleep 10
-
 	echo "CREATE DATABASE icingaweb2;"  | mysql -ptoor
 	echo "GRANT SELECT, INSERT, UPDATE, DELETE, DROP, CREATE VIEW, INDEX, EXECUTE ON icingaweb2.* TO 'icingaweb2'@'localhost' IDENTIFIED BY 'icingaweb-pwd';" | mysql -ptoor
 	mysql -ptoor icingaweb2 < /usr/share/icingaweb2/etc/schema/mysql.schema.sql
@@ -23,8 +21,11 @@ if [ ! -f "$FLAGFILE" ]; then
 	echo "CREATE DATABASE director CHARACTER SET 'utf8';"|  mysql -ptoor
 	echo "GRANT ALL ON director.* TO director@localhost IDENTIFIED BY 'director-pwd';" | mysql -ptoor
 
+	service mysql stop
+	service apache2 stop
+	
 	touch $FLAGFILE
 fi
 
-supervisord -n -c /etc/supervisor/icinga2.conf
+/usr/bin/supervisord -n -c /etc/supervisor/icinga2.conf
 

@@ -9,7 +9,7 @@ RUN apt-get -qq -y upgrade
 RUN echo "mysql-server mysql-server/root_password password toor" | debconf-set-selections
 RUN echo "mysql-server mysql-server/root_password_again password toor" | debconf-set-selections
 
-RUN apt-get -qq -y install mysql-server mysql-client unzip wget
+RUN DEBIAN_FRONTEND=noninteractive apt-get -qq -y install mysql-server mysql-client unzip wget supervisor
 
 RUN wget --quiet -O - https://packages.icinga.org/icinga.key | apt-key add -
 
